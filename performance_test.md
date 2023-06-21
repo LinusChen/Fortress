@@ -17,5 +17,11 @@ and the time used will be counted using the timeit package.
 | Function      |   Time (sec   |
 | ------------- | ------------- |
 |               |               |
+| cos(x)        |      0.09     |
+| exp(x)        |      0.09     |
+| exp(1j*x)     |      2.9      |
+| jv(0,x)       |      58       |
 | jv(1,x)       |      56       |
+| j0(x)         |      2.4      |
+| j1(x)         |      2.4      |
 
