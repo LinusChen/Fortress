@@ -6,6 +6,7 @@ This will provided knowledge about how to improve the performance of my code.
 In this part, I test the computational cost of some functions.
 
 ### Univariate function
+
 I start with functions with only one variable.
   y=f(x)
 
@@ -37,12 +38,46 @@ Note:
 
 ### Univariate function pre-tabulated
 
+When the function value is real number.
 | n_step_grid       |   Time (sec)  |
 | -------------     | ------------- |
+|  1e5              |     10.4      |
 |  1e4              |      7.4      |
+|  1e3              |      5.2      |
+|  1e2              |      3.3      |
 
 
+When the function value is complex number.
 | n_step_grid       |   Time (sec)  |
 | -------------     | ------------- |
+|  1e5              |     12.1      |
 |  1e4              |     10.9      |
+|  1e3              |      9.1      |
+|  1e2              |      6.8      |
+
+Therefore, for simple functions like cos, exp, j0, etc.,
+it is generally not worthy to pre-tabulate.
+
+### FT of ChromaticSBD
+
+In this section, we test the time used for FT of an ChromaticSBD object.
+For each ChromaticSBD object, we evalute on a grid of
+  n_wavelength = 1, n_uv=101.
+We repeat the operation for n=1e4 times.
+
+|           object  |   Time (sec)  |
+| -------------     | ------------- |
+|  star             |      2.1      |
+|  ring0            |      3.5      |
+|  ring1            |      4.0      |
+|  star_ring        |      6.5      |
+
+Here star is a point source;
+ring0 is UniformRing;
+ring1 is InclinedSBD of UniformRing.
+star_ring is the combination of star and ring1.
+
+Apparently, the time for ring0 computing is much longer than
+the time spent on the j0 or j1 computing.
+Where is the overhead?
 
