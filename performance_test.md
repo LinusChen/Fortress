@@ -1,11 +1,11 @@
-## Performance test.
+# Performance test.
 In this file, I record the tests for the time needed for some computation work.
 This will provided knowledge about how to improve the performance of my code.
 
 ## Frequently used functions.
 In this part, I test the computational cost of some functions.
 
-## Univariate function
+### Univariate function
 I start with functions with only one variable.
   y=f(x)
 
@@ -24,4 +24,7 @@ and the time used will be counted using the timeit package.
 | jv(1,x)       |      56       |
 | j0(x)         |      2.4      |
 | j1(x)         |      2.4      |
+
+Note:
+- j0(x) is much faster than jv(0,x). Similar for 1st order Bessel.
 
