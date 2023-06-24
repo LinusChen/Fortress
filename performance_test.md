@@ -95,6 +95,11 @@ This suggests the time on actually computing the data on each wavelength and bas
 is limited.
 More time is spent on overhead.
 
+Later result (for ring0 computing; n_b, n_w = 6, 50):
+- just using (r_in_rad, r_out_rad) instead (r_in, r_out)
+  would decrease the time from 4.2s to 2.8s.
+- converting b,w to cm (before the meshgrid) further decrease time to 2.1s.
+
 ### Quantity and array
 
 For a set of values (b,w), and value r, compute
