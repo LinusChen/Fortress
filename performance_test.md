@@ -36,7 +36,8 @@ Note:
   it creates y as an empty complex array and then assigns cos(x) and sin(x) as real/imag.
 - x\*\*2.0 is faster than x\*\*2.3, mabe because special treating of integer power.
 
-### Univariate function pre-tabulated
+### Univariate function pre-tabulated|  star_ring        |      4.7      |
+
 
 When the function value is real number.
 | n_step_grid       |   Time (sec)  |
@@ -60,7 +61,8 @@ it is generally not worthy to pre-tabulate.
 
 ### FT of ChromaticSBD
 
-In this section, we test the time used for FT of an ChromaticSBD object.
+In this section, we test the time used for FT of an ChromaticSBD object.|  star_ring        |      4.7      |
+
 For each ChromaticSBD object, we evalute on a grid of
   n_wavelength = 1, n_uv=101.
 We repeat the operation for n=1e4 times.
@@ -75,15 +77,36 @@ We repeat the operation for n=1e4 times.
 Following is when n_wavelength = 6.
 |           object  |   Time (sec)  |
 | -------------     | ------------- |
-|  star             |      2.4      |
+|  star0            |      2.2      |
+|  star1            |      2.4      |
+|  star2            |      4.0      |
 |  ring0            |      4.2      |
 |  ring1            |      4.7      |
 |  star_ring        |      7.5      |
 
-Here star is a point source;
+Following is when (n_b,n_w) = (6,50). And already with some optimization about the ring computing (using r_rad).
+|           object  |   Time (sec)  |
+| -------------     | ------------- |
+|  star0            |      2.1      |
+|  star1            |      2.3      |
+|  star2            |      3.9      |
+|  ring0            |      1.9      |
+|  ring1            |      2.3      |
+|  star_ring        |      4.7      |
+|  New way.         |               |
+|  star0            |      0.7      |
+|  star1            |      2.3      |
+|  star2            |      2.4      |
+|  star_ring        |      3.2      |
+
+Here star0 is a point source with zero offset;
+star1 is a point source with offset;
+star2 is star0 with a displacement.
 ring0 is UniformRing;
 ring1 is InclinedSBD of UniformRing.
-star_ring is the combination of star and ring1.
+star_ring is the combination of star0 and ring1.
+The "new way" is to implement star0 with offset=None.
+Turns out that is much more efficient (eliminating the computing of phase shift, which is actually 0).
 
 Apparently, the time for ring0 computing is much longer than
 the time spent on the j0 or j1 computing.
@@ -99,6 +122,9 @@ Later result (for ring0 computing; n_b, n_w = 6, 50):
 - just using (r_in_rad, r_out_rad) instead (r_in, r_out)
   would decrease the time from 4.2s to 2.8s.
 - converting b,w to cm (before the meshgrid) further decrease time to 2.1s.
+
+About point source computing.
+May I save time for point source without offset?
 
 ### Quantity and array
 
