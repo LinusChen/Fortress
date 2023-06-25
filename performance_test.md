@@ -205,7 +205,7 @@ In the following, uv is an object of type "uvPlane.Point", with len(uv)==6.
 Summary:
 - The tests show that it is important to avoid excessive quantity/unit operation.
 - In the case of uv, it is promised that u and v always have same unit, as in self.unit.
-    Take advantage of this to speed up!
+    Take advantage of this to speed up! The difference could be huge!
 - Now the new method already make uv.radius() very efficient.
 - But uv.transform() still not good.
 
