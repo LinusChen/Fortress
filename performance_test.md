@@ -186,3 +186,26 @@ Note that now "star1" impossible.
 The "new way" is to implement star0 with offset=None.
 Turns out that is much more efficient (eliminating the computing of phase shift, which is actually 0).
 
+**Currently the spectrum of these SBDs are constants, which is easy to compute.**
+**Maybe in the future, try power law.**
+
+## Test of points in uvPlane
+
+In the following, uv is an object of type "uvPlane.Point", with len(uv)==6.
+
+| Equation                                       | Time |
+| ---           | --- |
+| np.sqrt(uv.u**2+uv.v**2)                       |  0.37 |
+| np.sqrt(uv.u.value**2+uv.v.value**2)           |  0.02 |
+| np.sqrt(uv.u.value**2+uv.v.value**2) * uv.unit |  0.05 |
+| np.sqrt(uv.u.value**2+uv.v.value**2) <<uv.unit |  0.05 |
+| uv.radius()                                    |  0.05 |
+| uv.transform(m)                                |  0.35 |
+
+Summary:
+- The tests show that it is important to avoid excessive quantity/unit operation.
+- In the case of uv, it is promised that u and v always have same unit, as in self.unit.
+    Take advantage of this to speed up!
+- Now the new method already make uv.radius() very efficient.
+- But uv.transform() still not good.
+
