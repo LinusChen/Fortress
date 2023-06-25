@@ -147,15 +147,6 @@ Following is when (n_b,n_w) = (6,50). And already with some optimization about t
 |  star2            |      2.4      |
 |  star_ring        |      3.2      |
 
-Here star0 is a point source with zero offset;
-star1 is a point source with offset;
-star2 is star0 with a displacement.
-ring0 is UniformRing;
-ring1 is InclinedSBD of UniformRing.
-star_ring is the combination of star0 and ring1.
-The "new way" is to implement star0 with offset=None.
-Turns out that is much more efficient (eliminating the computing of phase shift, which is actually 0).
-
 Apparently, the time for ring0 computing is much longer than
 the time spent on the j0 or j1 computing.
 Where is the overhead?
@@ -176,12 +167,22 @@ May I save time for point source without offset?
 
 Following is when (n_b,n_w) = (6,50). And with some optimization regarding point source.
 Note that now "star1" impossible.
-|           object  |   Time (sec)  |
-| -------------     | ------------- |
-|  f_corr           |               |
+|           object  |   Time (sec)  |    Time   |
+| -------------     | ------------- |  -------- |
+|                   |    f_corr     |  FT_T2    |
 |  star0            |      0.7      |
 |  star2            |      2.4      |
 |  ring0            |      1.7      |
 |  ring1            |      2.0      |
 |  star_ring        |      3.0      |
+
+### Description of SBDs tested.
+- star0 is a point source with no offset
+- star1 is a point source with offset (not possible in new design)
+- star2 is star0 with a displacement.
+- ring0 is a UniformRing;
+- ring1 is InclinedSBD of rong0.
+- star_ring is the combination of star0 and ring1.
+The "new way" is to implement star0 with offset=None.
+Turns out that is much more efficient (eliminating the computing of phase shift, which is actually 0).
 
