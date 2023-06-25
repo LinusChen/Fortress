@@ -109,7 +109,7 @@ Therefore, for frequently used Quantity, always try to do the following.
 
 ## FT of ChromaticSBD
 
-In this section, we test the time used for FT of an ChromaticSBD object.|  star_ring        |      4.7      |
+In this section, we test the time used for FT of an ChromaticSBD object.
 
 For each ChromaticSBD object, we evalute on a grid of
   n_wavelength = 1, n_uv=101.
@@ -170,11 +170,11 @@ Note that now "star1" impossible.
 |           object  |   Time (sec)  |    Time   |
 | -------------     | ------------- |  -------- |
 |                   |    f_corr     |  FT_T2    |
-|  star0            |      0.7      |
-|  star2            |      2.4      |
-|  ring0            |      1.7      |
-|  ring1            |      2.0      |
-|  star_ring        |      3.0      |
+|  star0            |      0.7      |   0.7     |
+|  star2            |      2.4      |   2.4     |
+|  ring0            |      1.7      |   1.7     |
+|  ring1            |      2.0      |   2.1     |
+|  star_ring        |      3.0      |   3.7     |
 
 ### Description of SBDs tested.
 - star0 is a point source with no offset
