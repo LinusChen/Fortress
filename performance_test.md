@@ -36,7 +36,7 @@ Note:
   it creates y as an empty complex array and then assigns cos(x) and sin(x) as real/imag.
 - x\*\*2.0 is faster than x\*\*2.3, mabe because special treating of integer power.
 
-### Univariate function pre-tabulated|  star_ring        |      4.7      |
+### Univariate function pre-tabulated
 
 
 When the function value is real number.
@@ -173,4 +173,15 @@ Later result (for ring0 computing; n_b, n_w = 6, 50):
 
 About point source computing.
 May I save time for point source without offset?
+
+Following is when (n_b,n_w) = (6,50). And with some optimization regarding point source.
+Note that now "star1" impossible.
+|           object  |   Time (sec)  |
+| -------------     | ------------- |
+|  f_corr           |               |
+|  star0            |      0.7      |
+|  star2            |      2.4      |
+|  ring0            |      1.7      |
+|  ring1            |      2.0      |
+|  star_ring        |      3.0      |
 
