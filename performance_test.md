@@ -1,3 +1,4 @@
+1
 # Performance test.
 In this file, I record the tests for the time needed for some computation work.
 This will provided knowledge about how to improve the performance of my code.
