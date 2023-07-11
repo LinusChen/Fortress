@@ -1,6 +1,6 @@
 
 # Quantity and array
-## Test 111
+## Test 1
 
 For a set of values (b,w), and value r, compute
   $z = 2pi (b/w) r$
